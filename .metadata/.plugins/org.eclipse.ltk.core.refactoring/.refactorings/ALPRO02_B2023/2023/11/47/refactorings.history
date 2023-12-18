@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;ARRAYRECORD.laptop&apos; to &apos;arrMhs&apos;&#x0D;&#x0A;- Original project: &apos;ALPRO02_B2023&apos;&#x0D;&#x0A;- Original element: &apos;ARRAYRECORD.laptop&apos;&#x0D;&#x0A;- Renamed element: &apos;ARRAYRECORD.arrMhs&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;laptop&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;ARRAYRECORD{laptop.java[laptop" matchStrategy="1" name="arrMhs" qualified="false" references="true" similarDeclarations="false" stamp="1700551056106" textual="false" version="1.0"/>
+</session>

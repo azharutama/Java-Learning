@@ -1,0 +1,22 @@
+void InsertsionSort() {
+	int i=0 ,j = 0,y = 0;
+	boolean ketemu= false ;
+	for( i=1;i<= N;i++ ) {
+		
+	y=a[i];
+	j=i-1;
+	ketemu=false;
+	
+	while ((j>= 1)&&(ketemu=false)  ) {
+		
+			if (y < a[j]) {
+				a[j+1]=a[j];
+				j=j-1;
+		}else {
+			ketemu=true;
+		}
+	}
+	
+				
+}
+}
