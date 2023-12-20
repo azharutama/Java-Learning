@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+        <listEntry value="/ALPRO02_B2023/src/TUGAS_BESAR/ATM.java"/>
+    </listAttribute>
+    <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+        <listEntry value="1"/>
+    </listAttribute>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_EXCLUDE_TEST_CODE" value="true"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="TUGAS_BESAR.ATM"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MODULE_NAME" value="ALPRO02_B2023"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ALPRO02_B2023"/>
+</launchConfiguration>
