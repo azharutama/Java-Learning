@@ -1,0 +1,158 @@
+package File;
+
+ 
+import java.io.BufferedReader; 
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream; 
+import java.io.IOException; 
+import java.io.InputStreamReader; 
+import java.io.ObjectInputStream; 
+import java.io.ObjectOutputStream; 
+import java.util.Scanner; 
+ 
+public class FileMhs { 
+ 	 
+ 	void SaveFileMhs(){ 
+ 	 	Mahasiswa Mhs=new Mahasiswa(); 
+  int no;   String nama;   float ip; 
+ 	 	 
+ 	 	System.out.print("test 1: "); 
+ 	 	ObjectOutputStream out = null;  	System.out.print("test 2: ");  	 try {   
+ 	 	 // 1. buka file untuk ditulis  	 	 System.out.print("test 3: "); 
+          out=new ObjectOutputStream(new FileOutputStream               ("C:\\DataAlpro\\Nasabah.dat"+ ""));// nama direktori+file 
+          System.out.print("test 4: ");  	          for (int i=1;i<=3;i++) { 	         	   
+ 	         	  Scanner sc= new Scanner(System.in); 
+ 	       	 	  System.out.print("nim: "); no=sc.nextInt(); 
+ 	       	 	  System.out.print("nama: "); nama=sc.next(); 
+ 	       	 	  System.out.print("ip: "); ip=sc.nextFloat(); 
+           Mhs=new Mahasiswa(no,nama,ip);          System.out.print("test 5: "); 
+ 	              out.writeObject(Mhs);// tulis record ke file     
+ 	          }    
+ 	          System.out.print("test 6: ");  	          out.close(); 
+ 	          } catch (IOException e) { 
+ 	         	   
+ 	                e.printStackTrace(); 
+ 	        } 
+ 	} 
+ 	 
+ 	void SaveFileMhs2(){ 
+ 	 	Mahasiswa Mhs=new Mahasiswa(); 
+ 	 	int no;  	 	String nama;  	 	float ip; 	 
+ 	 	ObjectOutputStream out = null;  	 	 try {   
+ 	 	 	 // 1. buka file untuk ditulis 
+ 	 	 	 Scanner sc= new Scanner(System.in); 
+ 	          out=new ObjectOutputStream(new FileOutputStream 
+ 	              ("C:\\DataAlpro\\Nasabah.dat"+ ""));// nama direktori+file 
+           System.out.print("nim: "); no=sc.nextInt();            while (no !=999) {             
+ 	       	 	  System.out.print("nama: "); nama=sc.next(); 
+ 	       	 	  System.out.print("ip: "); ip=sc.nextFloat();  	       	 	  Mhs=new Mahasiswa(no,nama,ip);  	              out.writeObject(Mhs);// tulis record ke file  
+ 	              System.out.print("nim: "); no=sc.nextInt(); 
+ 	          }     	          out.close(); 
+          } catch (IOException e) {                   e.printStackTrace(); 
+        } 
+} 
+void BacaFile() { 
+	 	System.out.println("========== BacaToFile ======"); 
+        ObjectInputStream in = null; 
+        int total=0; 
+        Mahasiswa R = new Mahasiswa();  
+        
+ 	 	try { 
+ 	 	 	 
+ 	 	 	 
+ 	    	   in=new ObjectInputStream(new FileInputStream 
+ 	 	              ("C:\\DataAlpro\\Nasabah.dat")); 
+ 	 	 	   
+ 	 	    Object curR = in.readObject(); 
+ 	 	    try { 
+ 	 	 	  while (true) { 
+ 	 	             R = (Mahasiswa) curR;  
+ 	 	             System.out.println("Nim : "+ R.getNim()); 
+ 	 	             System.out.println("Nama : "+R.getNama());   	 	             System.out.println("Saldo : "+R.getIPK()); 
+ 	 	             total++; 	 	 	 	 	 	 
+ 	 	             curR = in.readObject();  
+ 	 	          }   
+ 	 	    } catch (EOFException e) { 
+                 System.out.println("Total record: "+ total); 	 	 	 	 
+ 	 	    }catch (ClassNotFoundException e) { 
+ 	             System.out.println("Class tidak ditemukan."); 
+ 	 	    } 	 
+ 	 	} catch (IOException e) { 
+            e.printStackTrace(); 
+ 	 	} catch (ClassNotFoundException e1) {  	 	 	e1.printStackTrace(); 
+ 	 	} 
+ 	} 
+ 	 
+ 	 
+ 	void UpdateIPK() { 
+ 	 	System.out.println("========== Tahap1======"); 
+        ObjectInputStream in = null;         ObjectOutputStream out = null;         int total=0; 
+        Mahasiswa R = new Mahasiswa();  
+        Scanner sc= new Scanner(System.in); 
+        System.out.print("nim cari: "); int nocari=sc.nextInt(); 
+        System.out.print("IPK Baru: "); float ipkbaru=sc.nextFloat(); 
+	 	try { 	 	 	 
+	    	   in=new ObjectInputStream(new FileInputStream 
+ 	 	              ("C:\\DataAlpro\\Nasabah.dat")); 
+ 	    	    
+ 	    	   out=new ObjectOutputStream(new FileOutputStream 
+ 	 	              ("C:\\DataAlpro\\temp.dat"+ ""));// nama direktori+file 
+ 	 	    Object curR = in.readObject(); 
+ 	 	    try {  	 	 	  while (true) { 
+               R = (Mahasiswa) curR;                 if (R.getNim()==nocari) 
+ 	 	                  R.setIPK(ipkbaru);    //R.ipk=ipkbaru 
+ 	 	  
+ 	 	             out.writeObject(R);// tulis record ke file  
+ 	 	             total++; 	 	 	 	 	 	 
+ 	 	             curR = in.readObject();  
+ 	 	          }   
+ 	 	    } catch (EOFException e) { 
+                 System.out.println("Total record: "+ total);                  out.close(); 
+ 	 	    }catch (ClassNotFoundException e) { 
+ 	             System.out.println("Class tidak ditemukan."); 
+ 	 	    } 	 
+ 	 	} catch (IOException e) { 
+            e.printStackTrace(); 
+ 	 	} catch (ClassNotFoundException e1) {  	 	 	e1.printStackTrace(); 
+ 	 	} 
+ 	 	 
+ 	 	System.out.println("========== Tahap2======");  
+ 	 	try { 	 	 	 
+ 	 	    	   in=new ObjectInputStream(new FileInputStream 
+ 	 	 	              ("C:\\DataAlpro\\temp.dat")); 
+ 	 	    	    
+ 	 	    	   out=new ObjectOutputStream(new FileOutputStream 
+ 	 	 	              ("C:\\DataAlpro\\nasabah.dat"+ ""));// nama direktori+file 
+ 	 	 	    Object curR = in.readObject(); 
+ 	 	 	    try { 
+ 	 	 	 	  while (true) { 
+ 	 	 	             R = (Mahasiswa) curR;  
+ 	 	 	             out.writeObject(R); 
+ 	 	 	             total++; 	 	 	 	 	 	 
+ 	 	 	             curR = in.readObject();  
+ 	 	          }   
+	 	 	    } catch (EOFException e) { 
+                 System.out.println("Total record: "+ total);  	                 out.close(); 
+ 	 	 	    }catch (ClassNotFoundException e) { 
+ 	 	             System.out.println("Class tidak ditemukan."); 
+ 	 	 	    } 	 
+ 	 	 	} catch (IOException e) { 
+ 	            e.printStackTrace(); 
+ 	 	 	} catch (ClassNotFoundException e1) {  	 	 	 	e1.printStackTrace(); 
+ 	 	 	} 
+ 	 
+ 	} 
+ 	  	 	 
+ 	public static void main(String[] args) { 
+ 	 	FileMhs  F=new FileMhs(); 
+ 	 	System.out.print("test: "); 
+ 	// 	F.SaveFileMhs2(); 
+ 	    F.BacaFile(); 
+ 	  //  F.UpdateIPK(); 
+ 	 //   F.BacaFile(); 
+ 	 	System.out.print("test selesai: "); 
+ 	 	 
+ 	} 
+ 
+} 

@@ -1,0 +1,41 @@
+package ARRAYRECORD;
+
+import java.util.Scanner;
+
+public class arrPegawai{
+ int N=2;
+ Pegawai[] a= new Pegawai[N];
+ 
+ 
+ void IsiArray() {
+	 Pegawai x;
+	 Scanner sc=new Scanner (System.in);
+	 for(int i=0; i<N;i++) {
+		 x = new Pegawai();
+	 System.out.println("masukan value " +i+ ":");
+	 x.BacaNilai();
+	 a[i]=x;
+	 }
+ }
+ 
+ 
+
+	 void TampilArray() {
+			for(int i=0; i < N ;i++) {
+			 System.out.println("el array ke " +i+ ":" +a[i]);
+			 a[i].TulisNilai();
+			 }
+		 }
+	 
+	 
+
+
+
+
+public static void main(String[]args) {
+	arrPegawai A=new arrPegawai();
+	A.IsiArray();
+	A.TampilArray();   
+
+}
+}

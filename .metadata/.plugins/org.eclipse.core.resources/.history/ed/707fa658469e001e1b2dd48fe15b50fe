@@ -1,7 +1,0 @@
-package TUGAS_BESAR;
-
-public class ATM {
-void menu() {
-	
-}
-}
